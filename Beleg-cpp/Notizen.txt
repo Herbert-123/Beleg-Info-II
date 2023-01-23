@@ -1,0 +1,25 @@
+Hauptmenu
+
+	1: Neuer Eintrag (vorhandenes Fahrzeug)
+	2: Neues Fahrzeug anlegen
+	(3: Neuen Fahrer anlegen)
+	4: Reset
+	5: Ende
+
+vll return 0 -> "funktion erfolgreich ausgeführt"
+vll Überschriften & Fehlermeldungen färben
+
+
+		Neuer Eintrag  (vorhandenes Fahrzeug): (Userinput)
+			Name Fahrer:
+			Datum:
+			getankte Liter:
+			Preis bezahlt:
+			Name Tankstelle:
+			jetziger km Stand:
+
+		Neues Fahrzeug anlegen: 
+			Kennzeichen:
+			Marke
+			Autotyp:
+			Start km:

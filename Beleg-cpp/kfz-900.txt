@@ -1,0 +1,4 @@
+Kennzeichen:			kfz-900
+Marke:				carcar
+Autotyp:				Nr.5
+Ausgangskilometerstand:		234.789001
