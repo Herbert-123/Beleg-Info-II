@@ -1,8 +1,9 @@
 # Beleg-Info-II
 
-Beleg Vorarbeit vom letzten Jahr weiterentwickelt
-mit struct
-  -Problem: Speicherpfad "struct File_Path" muss in jedem .c - file neu Deklariert werden
+WICHTIG Speicherpfad (seed-path) muss in main.cpp in vorhandenen Ordner geändert werden
+
+Beleg Vorarbeit vom letzten Jahr weiterentwickelt mit struct
+  
   
  ausmodularisiert in 
   - header.h: Variablen in struct, Funktionsdeklrationen
