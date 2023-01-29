@@ -8,6 +8,12 @@ int nfz(File_Path fp, global_var gv)
 
 	FILE* nfzp;
 
+	//Setzen Speicherpfad
+	//Adress reset; nötig, da Adressberechnung sonst nur dateiendung anhängt -> "...\\ordner\\datei.xtx\\text.txt"
+	memset(fp.file_pathfz, 0, sizeof(fp.file_pathein));			//beschreibt file_pathein mit nur nullen
+	strcat(fp.file_pathfz, fp.seed_path);					//beschreibt file_pathein mit seed_path
+
+
 	Fahrzeug snfz;
 		strcpy(snfz.Kennzeichen, "0");
 		strcpy(snfz.Marke, "0");

@@ -6,6 +6,9 @@
 #include <windows.h>
 #include <string.h>
 
+#include <sys/stat.h>
+#include <stdbool.h>
+
 using namespace std;
 
 //Deklarierung struct
@@ -96,5 +99,7 @@ using namespace std;
 	int nfz(struct File_Path, struct global_var);			//Neues Fahrzeug anlegen
 	int fahrer(struct File_Path, struct global_var);		//Neuen Fahrer Anlegen
 	//int reset();		//Reset
+
+	bool file_exist(char filename[255]);
 
 	//Bei Fehler LNK2019: Funktionsaufrufe und Definitionen auf unterschiedliche Übergabewerte überprüfen

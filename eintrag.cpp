@@ -15,7 +15,7 @@ int eintrag(File_Path fp ,global_var gv) {
 	//Adress reset; nötig, da Adressberechnung sonst nur dateiendung anhängt -> "...\\ordner\\datei.xtx\\text.txt"
 	memset(fp.file_pathein, 0, sizeof(fp.file_pathein));			//beschreibt file_pathein mit nur nullen
 	strcat(fp.file_pathein, fp.seed_path);					//beschreibt file_pathein mit seed_path
-	//strcpy(fp.file_pathein, fp.seed_path);
+	
 
 	// Variablen Definition ursprünglich hier
 
@@ -26,22 +26,57 @@ int eintrag(File_Path fp ,global_var gv) {
 	//Überschrift
 	printf("                                     <<< Neuer Fahrteintrag: >>>\n\n\n");
 
+	
+	//Kennzeicheneingabe und Fehlerprüfung
+
+	/*
 	printf("Bitte geben Sie das Kennzeichen ein:                              Beipiel Syntax: 'AA-BB-0000'\n");
 	scanf_s("%19s", &e.Kennzeichen, 20);
 	fflush(stdin);
+	*/
 
 	//Pfadberechnung:
+	/*
 	strcat(fp.file_pathein, "\\\\");
 	strcat(fp.file_pathein, e.Kennzeichen);
 	strcat(fp.file_pathein, ".txt");
 	printf("\nDateipfad: %s \n", fp.file_pathein);
+	*/
 
-	fflush(stdin);
+	//fflush(stdin);
+
+	for (size_t i = 0; i < fzz; i++)
+	{
+		printf("Bitte geben Sie das Kennzeichen ein:                              Beipiel Syntax: 'AA-BB-0000'\n");
+		scanf_s("%19s", &e.Kennzeichen, 20);
+		fflush(stdin);
+
+		strcat(fp.file_pathein, "\\\\");
+		strcat(fp.file_pathein, e.Kennzeichen);
+		strcat(fp.file_pathein, ".txt");
+
+		struct stat buffer;
+		int check=stat(fp.file_pathein, &buffer);
+
+		if (check == 0) { 
+			printf("\n aufgerufene Datei: %s \n", fp.file_pathein);
+			break; 
+		}
+		
+		else{
+			printf("\nUngueltige Datei: %s \n", fp.file_pathein);
+			printf("Fahrzeug konnte nicht gefunden werden! Bitte ueberpruefen Sie Ihre Eingabe!\n\n");
+
+			//Adress reset
+			memset(fp.file_pathein, 0, sizeof(fp.file_pathein));
+			strcat(fp.file_pathein, fp.seed_path);
+			}
+
+	}
+
+	
 	// Öffen Datei; Modus: read
 		ne = fopen(fp.file_pathein, "r");
-
-		//Fehlerüberprüfung
-		if (ne == NULL) { printf("Fahrzeug konnte nicht gefunden werden! Bitte ueberpruefen Sie das Kennzeichen!\n"); }
 
 		//get und Anzeige vorheriger km Stand
 		fseek(ne, -14L, SEEK_END);
